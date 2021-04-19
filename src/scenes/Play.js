@@ -4,21 +4,33 @@ class Play extends Phaser.Scene{
         console.log("is the play scene being created???")
     }
     preload(){
+<<<<<<< HEAD
         this.load.image('border', 'assets/border.png')
         this.load.image('lair', 'assets/lair2.png');
         this.load.image('ariel', 'assets/ariel.png');
         this.load.image('ursula', 'assets/ursula.png');
         this.load.image('trident', 'assets/trident2.png')
+=======
+        this.load.image('lair', 'assets/lair2.png');
+        this.load.image('ariel', 'assets/ariel.png');
+        this.load.image('ursula', 'assets/ursula.png');
+>>>>>>> c67b57fb2f76d6a4a3880b91627d256fe07c985d
         this.load.spritesheet('explosion', 'assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9})
     }
     create(){
         this.lair = this.add.tileSprite(0, 0, 640, 480, 'lair').setOrigin(0, 0);
         console.log('areil created');
         this.ariel = new Ariel(this, game.config.width/2, 431, 'ariel').setOrigin(0.5, 1);
+<<<<<<< HEAD
         this.ursula1 = new Ursula(this, 100, 200, 'ursula',0,  10).setOrigin(0.5, 1);
         this.ursula2 = new Ursula(this, 300, 240, 'ursula', 0,  10).setOrigin(0.5, 1);
         this.ursula3 = new Ursula(this, 380, 300, 'ursula', 0, 10).setOrigin(0.5, 1);
         this.trident = new Trident(this, 150, 200, 'trident' , 0, 100).setOrigin(0.5, 1);
+=======
+        this.ursula1 = new Ursula(this, 100, 200, 'ursula',0,  100).setOrigin(0.5, 1);
+        this.ursula2 = new Ursula(this, 300, 240, 'ursula', 0,  100).setOrigin(0.5, 1);
+        this.ursula3 = new Ursula(this, 380, 300, 'ursula', 0, 100).setOrigin(0.5, 1);
+>>>>>>> c67b57fb2f76d6a4a3880b91627d256fe07c985d
         //green UI background rectangle
         this.add.rectangle(0, borderUISize + borderPadding,
              game.config.width, borderUISize * 2, 
@@ -82,12 +94,16 @@ class Play extends Phaser.Scene{
             this.ursula1.update();           // update spaceships (x3)
             this.ursula2.update();
             this.ursula3.update();
+<<<<<<< HEAD
             this.trident.update();
+=======
+>>>>>>> c67b57fb2f76d6a4a3880b91627d256fe07c985d
         } 
 
         if(this.checkCollision(this.ariel, this.ursula3)) {
             this.ariel.reset();
             this.ursulaExplode(this.ursula3);   
+<<<<<<< HEAD
           }
           if (this.checkCollision(this.ariel, this.ursula2)) {
             this.ariel.reset();
@@ -100,6 +116,16 @@ class Play extends Phaser.Scene{
           if(this.checkCollision(this.ariel, this.trident)){
               this.ariel.reset();
               this.ursulaExplode(this.trident);
+=======
+          }
+          if (this.checkCollision(this.ariel, this.ursula2)) {
+            this.ariel.reset();
+            this.ursulaExplode(this.ursula2);
+          }
+          if (this.checkCollision(this.ariel, this.ursula1)) {
+            this.ariel.reset();
+            this.ursulaExplode(this.ursula1);
+>>>>>>> c67b57fb2f76d6a4a3880b91627d256fe07c985d
           }
           
 
