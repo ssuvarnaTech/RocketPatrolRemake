@@ -5,40 +5,43 @@ class Menu extends Phaser.Scene{
     }
     preload() {
         // load audio
-        this.load.audio('sfx_select', 'assets/assets_blip_select12.wav');
-        this.load.audio('sfx_explosion', 'assets/assets_explosion38.wav');
-        this.load.audio('sfx_rocket', 'assets/assets_rocket_shot.wav');
+        this.load.audio('sfx_select', 'assets/splash.wav');
+        this.load.audio('sfx_explosion', 'assets/spell.wav');
+        this.load.audio('sfx_rocket', 'assets/bubbles.wav');
+        this.load.image('cover', 'assets/underthesea.jpeg');
       }
 
     create(){
         let menuConfig = {
-            fontFamily: 'Courier',
-            fontSize : '28px',
-            backgroundColor: '#F3B141',
-            color: '#843605',
+            fontFamily: 'Comic Sans',
+            fontSize : '36px',
+            backgroundColor: '#90ee90',
+            color: '#FFF',
             align: 'right',
             padding: {
-                top: 5,
-                bottom: 5,
+                top: 10,
+                bottom: 10,
 
             },
             fixedWidth : 0
         }
+        this.cover = this.add.image(game.config.width / 2, game.config.height / 2, 'cover');
+        this.cover.setDisplaySize(game.config.width, game.config.height);
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - 
-            borderPadding, 'ROCKET PATROL', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2, 'Use <> arrows to move & (F) to fire'
+            borderPadding, "Welcome to Ariel's fight", menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2, 'Press S to Splash '
         ,menuConfig).setOrigin(0.5);
-        menuConfig.backgroundColor = '#00FF00';
+        menuConfig.backgroundColor = '#90ee90';
         menuConfig.color = '#000';
-        this.add.text(game.config.width/2, game.config.height/2 + borderUISize +
-            borderPadding, 'Press < for Novice or > for Expert', menuConfig).setOrigin(0.5);
-        keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
-        keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+        // keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
+        // keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+        console.log("hi")
+        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
 
     
     }
     update() {
-        if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
+        if (Phaser.Input.Keyboard.JustDown(keyS)) {
           // easy mode
           game.settings = {
             spaceshipSpeed: 3,
@@ -47,15 +50,15 @@ class Menu extends Phaser.Scene{
           this.sound.play('sfx_select');
           this.scene.start('playScene');    
         }
-        if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
-          // hard mode
-          game.settings = {
-            spaceshipSpeed: 4,
-            gameTimer: 45000    
-          }
-          this.sound.play('sfx_select');
-          this.scene.start('playScene');    
-        }
+        // if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
+        //   // hard mode
+        //   game.settings = {
+        //     spaceshipSpeed: 4,
+        //     gameTimer: 45000    
+        //   }
+        //   this.sound.play('sfx_select');
+        //   this.scene.start('playScene');    
+        // }
       }
 
 
